@@ -5,7 +5,6 @@ import (
 	"net"
 )
 
-type Proxy interface {
-	Listen(context.Context) (net.Listener, error)
+type Handler interface {
 	Handle(context.Context, net.Conn) error
 }
