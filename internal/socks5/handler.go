@@ -79,6 +79,8 @@ func (h *Handler) handshake(ctx context.Context, conn net.Conn) error {
 		return fmt.Errorf("write auth method: %w", err)
 	}
 
+	log.Printf("[Handler][%s] Auth revocation sent", conn.RemoteAddr())
+
 	return nil
 }
 
