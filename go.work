@@ -1,0 +1,8 @@
+go 1.23.3
+
+use (
+	./cmd/socks5
+	./internal/app
+	./internal/proxy
+	./internal/socks5
+)
