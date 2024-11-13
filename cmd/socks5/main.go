@@ -39,13 +39,13 @@ func main() {
 	flag.Parse()
 
 	if err := initLog(); err != nil {
-		log.Fatal("setLogFile(): ", err)
+		log.Fatal("init log: ", err)
 	}
 
 	listenerFactory := socks5.NewListenerFactory(*port)
 	handler := socks5.NewHandler()
 
 	if err := app.Run(context.Background(), listenerFactory, handler); err != nil {
-		log.Fatal("app.Run(): ", err)
+		log.Fatal("run app: ", err)
 	}
 }
