@@ -1,9 +1,22 @@
 package socks5
 
-import "github.com/rylenko/proxy/internal/proxy"
+import (
+	"context"
+	"net"
+
+	"github.com/rylenko/proxy/internal/proxy"
+)
 
 type Proxy struct {
 	port int
+}
+
+func (p *Proxy) Handle(ctx context.Context, conn net.Conn) error {
+	return nil
+}
+
+func (p *Proxy) Listen(ctx context.Context) (net.Listener, error) {
+	return nil, nil
 }
 
 func NewProxy(port int) *Proxy {
