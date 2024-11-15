@@ -22,24 +22,26 @@ var (
 	logFilePath *string = flag.String("log", os.TempDir() + "/" + logFileDefaultName, "path to the logs file")
 )
 
-func initLog() error {
+func initLog() (*os.File, error) {
 	file, err := os.OpenFile(*logFilePath, logFileFlag, logFilePerm)
 	if err != nil {
-		return fmt.Errorf("os.OpenFile(\"%s\", %d, %s): %w", *logFilePath, logFileFlag, logFilePerm.String(), err)
+		return nil, fmt.Errorf("os.OpenFile(\"%s\", %d, %s): %w", *logFilePath, logFileFlag, logFilePerm.String(), err)
 	}
 
 	log.SetOutput(file)
 	log.SetFlags(logFlags)
 
-	return nil
+	return file, nil
 }
 
 func main() {
 	flag.Parse()
 
-	if err := initLog(); err != nil {
+	logFile, err := initLog()
+	if err != nil {
 		log.Fatal("init log: ", err)
 	}
+	defer logFile.Close()
 
 	listenerFactory := socks5.NewListenerFactory(*port)
 	handler := socks5.NewHandler()

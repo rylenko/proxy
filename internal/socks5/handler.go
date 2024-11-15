@@ -117,6 +117,7 @@ func (h *Handler) handleRequest(reader *bufio.Reader, conn net.Conn) (net.Conn, 
 
 	destLocalTCPAddr, ok := dest.LocalAddr().(*net.TCPAddr)
 	if !ok {
+		dest.Close()
 		return nil, fmt.Errorf("get destination local TCP address of %s", dest.LocalAddr())
 	}
 

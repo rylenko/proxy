@@ -1,7 +1,5 @@
 .POSIX:
 
-# TODO: linter
-
 include config.mk
 
 all: build

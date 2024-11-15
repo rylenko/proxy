@@ -25,3 +25,11 @@ $ socks5 -help
 # Implementations
 
 - Simple implementation of [SOCKS5](https://www.ietf.org/rfc/rfc1928.txt) proxy: establishing a TCP connection without authentication and IPv6.
+
+# Todo
+
+- Make logs more readable
+- Check error after Close() calls
+- Linter
+- Add context where possible
+- Tests
