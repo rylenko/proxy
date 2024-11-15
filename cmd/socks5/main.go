@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"fmt"
 	"log"
@@ -45,7 +44,7 @@ func main() {
 	listenerFactory := socks5.NewListenerFactory(*port)
 	handler := socks5.NewHandler()
 
-	if err := app.Run(context.Background(), listenerFactory, handler); err != nil {
+	if err := app.Run(listenerFactory, handler); err != nil {
 		log.Fatal("run app: ", err)
 	}
 }

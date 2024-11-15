@@ -1,10 +1,7 @@
 package proxy
 
-import (
-	"context"
-	"net"
-)
+import "net"
 
 type ListenerFactory interface {
-	Create(context.Context) (net.Listener, error)
+	Create() (net.Listener, error)
 }

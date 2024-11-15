@@ -1,7 +1,6 @@
 package socks5
 
 import (
-	"context"
 	"fmt"
 	"net"
 
@@ -12,7 +11,7 @@ type ListenerFactory struct {
 	port int
 }
 
-func (f *ListenerFactory) Create(ctx context.Context) (net.Listener, error) {
+func (f *ListenerFactory) Create() (net.Listener, error) {
 	addrStr := fmt.Sprintf(":%d", f.port)
 
 	listener, err := net.Listen("tcp", addrStr)

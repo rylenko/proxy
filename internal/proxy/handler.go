@@ -1,10 +1,7 @@
 package proxy
 
-import (
-	"context"
-	"net"
-)
+import "net"
 
 type Handler interface {
-	Handle(context.Context, net.Conn) error
+	Handle(net.Conn) error
 }
